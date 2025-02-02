@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .welcome-div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #00008B;
+      padding: 50px;
+      border-radius: 10px;
+      text-align: center;
+      color: white;
+      width: 600px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .redirect-button {
+      text-decoration: none;
+      padding: 10px 20px;
+      background-color: #87CEFA;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      margin: 10px;
+    }
+
+    .redirect-button:hover {
+      background-color: #4682B4;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+    }
+
+    li {
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    /* Style for the highlighted note */
+    .note {
+      background-color: #FF6347;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px; /* Adds spacing between the note and content */
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="welcome-div">
+    <h1>Welcome to our website!</h1>
+    <p>Please click the button below to proceed.</p>
+    <div style="display: flex; justify-content: center;">
+      <a href="http://127.0.0.1:8000/admin/" class="redirect-button">Admin</a>
+      <a href="http://127.0.0.1:8000/faqs/" class="redirect-button">FAQ</a>
+      <a href="http://127.0.0.1:8000/custom-admin/" class="redirect-button">Custom-Admin Panel</a>
+    </div>
+    <br><br>
+    <h2>Benefits of FAQ</h2>
+    <ul>
+      <li>FAQ provides quick answers to common queries.</li>
+      <li>FAQ helps users save time and reduce support requests.</li>
+      <li>FAQ improves user experience by offering instant solutions.</li>
+      <li>A good FAQ is clear, concise, and regularly updated.</li>
+      <li>FAQ is commonly used on websites, apps, and product pages.</li>
+    </ul>
+
+    <!-- Highlighted note inside container -->
+    <div class="note">
+      Note: ck editor is not working properly creating some issues  in the custom admin panel so i dont used it .it is working perfect in django admin-panel.
+    </div>
+  </div>
+</body>
+</html>

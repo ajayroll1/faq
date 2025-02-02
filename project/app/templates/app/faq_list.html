@@ -1,0 +1,324 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #00008B;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        /* Google Translate Dropdown */
+        #google_translate_element {
+            text-align: right;
+            margin: 10px 20px;
+        }
+
+        /* FAQ Content Container */
+        #faq-content {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h3 {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Google Translate Styles */
+        #google_translate_element select {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            background-color: #00008B;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Add gap after the last FAQ item */
+        .faq-item:last-child {
+            margin-bottom: 40px; /* Adjust this value as needed */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Frequently Asked Questions</h1>
+    </header>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+
+    <!-- FAQ Content -->
+    <div id="faq-content">
+        {% for faq in faqs %}
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer|safe }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language English
+            }, 'google_translate_element');
+
+            // Delay to ensure Google Translate loads
+            setTimeout(() => {
+                applyLanguageFromURL();  // URL se language apply karega
+                updateURLOnLanguageChange();  // Jab language change ho to URL update karega
+            }, 2000);
+        }
+
+        // Function to apply language from URL
+        function applyLanguageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langCode = urlParams.get('lang'); // Get 'lang' parameter from URL
+            
+            if (langCode) {
+                const selectElement = document.querySelector('#google_translate_element select');
+                if (selectElement) {
+                    selectElement.value = langCode; // Dropdown value set karega
+                    selectElement.dispatchEvent(new Event('change')); // Translation trigger karega
+                }
+            }
+        }
+
+        // Listen for Google Translate language change event and update URL
+        function updateURLOnLanguageChange() {
+            setTimeout(() => {
+                const selectElement = document.querySelector('#google_translate_element select');
+                if (selectElement) {
+                    selectElement.addEventListener('change', function() {
+                        const selectedLanguage = selectElement.value;
+                        const currentURL = new URL(window.location.href);
+                        currentURL.searchParams.set('lang', selectedLanguage);
+                        window.history.pushState({}, '', currentURL);
+                    });
+                }
+            }, 2000); // 2 second ka delay taaki Google Translate ka dropdown load ho jaye
+        }
+
+        window.onload = googleTranslateElementInit;
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html> {% endcomment %}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fb;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Section */
+        header {
+            background-color: #00008B;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+
+        /* Google Translate Dropdown */
+        #google_translate_element {
+            text-align: right;
+            margin: 10px 20px;
+        }
+
+        /* FAQ Content Container */
+        #faq-content {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h3 {
+            font-size: 24px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Google Translate Styles */
+        #google_translate_element select {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        /* Footer Section */
+        footer {
+            text-align: center;
+            background-color: #00008B;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Add gap after the last FAQ item */
+        .faq-item:last-child {
+            margin-bottom: 40px; /* Adjust this value as needed */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Frequently Asked Questions</h1>
+    </header>
+
+    <!-- Google Translate Widget -->
+    <div id="google_translate_element"></div>
+
+    <!-- FAQ Content -->
+    <div id="faq-content">
+        {% for faq in faqs %}
+            <div class="faq-item">
+                <h3>{{ faq.question }}</h3>
+                <p>{{ faq.answer|safe }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',  // Default language English
+            }, 'google_translate_element');
+
+            // Delay to ensure Google Translate loads
+            setTimeout(() => {
+                applyLanguageFromURL();  // URL se language apply karega
+                updateURLOnLanguageChange();  // Jab language change ho to URL update karega
+            }, 2000);
+        }
+
+        // Function to apply language from URL
+        function applyLanguageFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const langCode = urlParams.get('lang'); // Get 'lang' parameter from URL
+            
+            if (langCode) {
+                const selectElement = document.querySelector('#google_translate_element select');
+                if (selectElement) {
+                    selectElement.value = langCode; // Dropdown value set karega
+                    selectElement.dispatchEvent(new Event('change')); // Translation trigger karega
+                }
+            }
+        }
+
+        // Listen for Google Translate language change event and update URL
+        function updateURLOnLanguageChange() {
+            setTimeout(() => {
+                const selectElement = document.querySelector('#google_translate_element select');
+                if (selectElement) {
+                    selectElement.addEventListener('change', function() {
+                        const selectedLanguage = selectElement.value;
+                        const currentURL = new URL(window.location.href);
+                        currentURL.searchParams.set('lang', selectedLanguage);
+                        window.history.pushState({}, '', currentURL);
+                    });
+                }
+            }, 2000); // 2 second ka delay taaki Google Translate ka dropdown load ho jaye
+        }
+
+        window.onload = googleTranslateElementInit;
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+
